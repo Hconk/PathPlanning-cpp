@@ -1,0 +1,11 @@
+{
+    "name": "pathplaning-cpp",
+    "version-string": "0.0.1",
+    "homepage": "https://github.com/Hconk/PathPlanning-cpp",
+    "dependencies": [
+      {
+        "name": "opencv",
+        "platform": "windows & x64"
+      }
+    ]
+  }
