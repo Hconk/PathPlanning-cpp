@@ -34,9 +34,18 @@ private:
 public:
     Env(int x_range = 51, int y_range = 31, int cell_size = 10);
     bool Render();
+    bool SetVisitedPoint(std::set<std::pair<int,int>> points) {
+        m_visited_points = points;
+        return true;
+    }
+    bool SetWayPath(std::vector<std::pair<int,int>> points) {
+        m_waypoints = points;
+        return true;
+    }
     cv::Mat GetMat() {
         return m_img;
     }
+    bool animation();
     ~Env();
 };
 

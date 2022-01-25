@@ -66,9 +66,33 @@ bool Env::Render()
 
     cv::rectangle(m_img, cv::Rect2d(m_start_point.first * m_cell_size, m_start_point.second*m_cell_size, m_cell_size, m_cell_size), cv::Scalar(0,0,255), -1);
     cv::rectangle(m_img, cv::Rect2d(m_end_point.first * m_cell_size, m_end_point.second*m_cell_size, m_cell_size, m_cell_size), cv::Scalar(255,0,0), -1);
-    for(auto point: m_visited_points) {
-        cv::rectangle(m_img, cv::Rect2d(point.first * m_cell_size, point.second*m_cell_size, m_cell_size, m_cell_size), cv::Scalar(210,210,210), -1);
 
+    return true;
+}
+
+bool Env::animation()
+{
+    Render();
+    cv::namedWindow("animation");
+    for(auto point: m_visited_points) {
+        cv::imshow("animation", m_img);
+        cv::circle(m_img, cv::Point2d(point.first * m_cell_size + m_cell_size/2, point.second*m_cell_size + m_cell_size /2),m_cell_size/3,cv::Scalar(100,100,100),-1);
+        cv::waitKey(100);
+    }
+
+    if(m_waypoints.size() != 0) {
+        bool first = true;
+        std::pair<int, int> tmp_point;
+        for(auto point: m_waypoints) {
+            if(first) {
+                first = false;
+            } else {
+                std::cout <<"draw path: " << tmp_point.first * m_cell_size << " " << tmp_point.second * m_cell_size << std::endl;
+                cv::line(m_img, cv::Point2d(tmp_point.first * m_cell_size, tmp_point.second * m_cell_size), cv::Point2d(point.first*m_cell_size, point.second*m_cell_size), cv::Scalar(0,4,255),4);
+            }
+            tmp_point = point;
+            cv::imshow("animation", m_img);
+        }
     }
 
     return true;

@@ -24,7 +24,7 @@ public:
     Draw(/* args */);
     bool draw_arrow(cv::Mat &img, int x, int y, double angle, int L, int c);
     bool draw_car(cv::Mat &img, int x, int y, double yaw, int w, int L);
-    bool show();
+    bool animation();
     ~Draw();
 };
 
