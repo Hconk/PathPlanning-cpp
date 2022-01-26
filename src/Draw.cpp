@@ -84,8 +84,8 @@ bool Draw::draw_car(cv::Mat &img, int x, int y, double yaw, int w, int L)
     return 0;
 }
 
-bool Draw::show()
+bool Draw::animation()
 {
-    show();
+
     return 0;
 }
