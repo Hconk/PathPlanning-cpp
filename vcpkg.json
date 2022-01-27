@@ -6,6 +6,10 @@
       {
         "name": "opencv",
         "platform": "windows & x64"
+      },
+      {
+        "name": "spdlog",
+        "platform": "windows & x64"
       }
     ]
   }
